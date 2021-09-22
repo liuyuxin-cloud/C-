@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//定义存放26个英文字母的链表使其能循环输出
 typedef struct Lnode{
     char data;
     struct Lnode* next;
