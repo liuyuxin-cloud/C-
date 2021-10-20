@@ -1,7 +1,5 @@
 #include <iostream>
-#include <inmanip>
 using namespace std;
-#define NUM 10;
 
 //实现三路快排
 typedef struct sqlist{
@@ -48,10 +46,10 @@ void quicksort(sqlist L, int low, int high){
 
 int main(){
     
-    int a[NUM] = {2,2,2,1,1,1,4,4,3,3};
+    int a[10] = {2,2,2,1,1,1,4,4,3,3};
     sqlist L;
     L.elem = a;
-    L.length = NUM;
+    L.length = 10;
     quicksort(L,0,L.length-1);
     for(int i=0 ; i<L.length ; i++){
         printf("%d",L.elem[i]);

@@ -1,9 +1,10 @@
-#include <iostream.h>
-#include <process.h>
+#include <iostream>
+using namespace std;
 
 //线性表的顺序存储表示
-const LIST_INIT_SIZE = 100;
-const LISTINCREMENT = 10;
+const int LIST_INIT_SIZE = 100;
+const int LISTINCREMENT = 10;
+typedef int ElemType;
 
 typedef struct{
     ElemType *elem; //数组的头指针
@@ -17,7 +18,7 @@ void InitList_Sq(SqList &L,int maxsize=LIST_INIT_SIZE,int incresize = LISTINCREM
     L.elem = new ElemType[maxsize];
     L.length = 0;
     L.listsize = maxsize;
-    L.increment = incrementsize;
+    L.incrementsize = incresize;
 }
 
 //查找元素操作
@@ -30,9 +31,9 @@ int LocateElem_Sq(SqList L,ElemType e){
 
 //为顺序表追加空间
 void increment(SqList &L){
-    ElemType a[];
+    ElemType* a;
     a = new ElemType[L.listsize + L.incrementsize];
-    for(i=0 ; i<L.length ; i++){
+    for(int i=0 ; i<L.length ; i++){
         a[i] = L.elem[i];
     }
     delete[] L.elem;
