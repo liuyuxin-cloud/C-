@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//循环队列
 typedef int QElemType;
 typedef struct{
     QElemType *elem;
@@ -10,7 +11,7 @@ typedef struct{
     int incrementsize;
 }SqQueue;
 
-void InitQueue_Sq(SqQueue &Q, int maxsize, int increzise){
+void InitQueue_Sq(SqQueue &Q, int maxsize, int increzise = 10){
     Q.elem = new QElemType[maxsize + 1];
     Q.queuesize = maxsize + 1;
     Q.incrementsize = increzise;
@@ -41,10 +42,57 @@ void EnQueue_Sq(SqQueue &Q, QElemType e){
     Q.rear = (Q.rear + 1) % Q.queuesize;
 }
 
-
-
 bool DeQueue_Sq(SqQueue &Q, QElemType &e){
     if(Q.front == Q.rear)   return false;
     e = Q.elem[Q.front];
     Q.front = (Q.front + 1) % Q.queuesize;  return true;
+}
+
+void GetHead_Sq(SqQueue Q, QElemType &e){
+    e =Q.elem[Q.front];
+}
+
+//链队列
+typedef struct LNode
+{
+    QElemType data;
+    struct LNode *next;
+}LNode,*QueuePtr;
+
+typedef struct{
+    QueuePtr front;
+    QueuePtr rear;
+}LinkQueue;
+
+void InitQueue_L(LinkQueue &Q){
+    Q.front = Q.rear = new LNode;
+    Q.front->next = NULL;
+}
+
+void DestroyQueue_L(LinkQueue &Q){
+    while(Q.front){
+        Q.rear = Q.front->next;
+        delete Q.front;
+        Q.front = Q.rear;
+    }
+}
+
+void EnQueue_L(LinkQueue &Q, QElemType e){
+    LNode* p = new LNode;
+    p->data = e;
+    p->next = NULL;
+    Q.rear->next = p;
+    Q.rear = p;
+}
+
+bool DeQueue_L(LinkQueue &Q, QElemType &e){
+    if(Q.front == Q.rear) return false;
+    LNode* p = Q.front->next;
+    e = p->data;
+    Q.front->next = p->next;
+    if(Q.rear == p){
+        Q.rear = Q.front;
+    }
+    delete p;
+    return true;
 }

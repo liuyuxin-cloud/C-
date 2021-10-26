@@ -1,5 +1,4 @@
 #include <iostream>
-#include "LinkList.cpp"
 using namespace std;
 
 // 顺序栈
@@ -56,10 +55,16 @@ bool StackFull_Sq(SqStack S){
 }
 
 //链栈
-typedef LinkList LinkStack;
+typedef struct{
+    SElemType data;
+    LNode *next;
+    int length;
+}LNode,*LinkStack;
 
 void InitStack_L(LinkStack &S){
-    S = NULL;
+    S->data = 0;
+    S->next = NULL;
+    S->length = 0;
 }
 
 void Push_L(LinkStack &S, SElemType e){
@@ -67,6 +72,7 @@ void Push_L(LinkStack &S, SElemType e){
     p->data = e;
     p->next = S;
     S = p;
+    S->length++;
 }
 
 bool Pop_L(LinkStack &S, SElemType &e){
@@ -76,6 +82,7 @@ bool Pop_L(LinkStack &S, SElemType &e){
         S = S->next;
         e = p->data;
         delete p;
+        S->length--;
         return true;
     }
     else return false;
