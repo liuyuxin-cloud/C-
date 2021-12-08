@@ -55,9 +55,9 @@ bool StackFull_Sq(SqStack S){
 }
 
 //链栈
-typedef struct{
+typedef struct LNode{
     SElemType data;
-    LNode *next;
+    struct LNode *next;
     int length;
 }LNode,*LinkStack;
 
