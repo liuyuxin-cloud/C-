@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_NUM_OF_KEY = 6;  //关键字个数
-const int RADIX 10;            //关键字基数
+const int MAX_NUM_OF_KEY = 10;  //关键字个数
+const int RADIX = 10;            //关键字基数
 const int MAXSIZE = 10000;
+const int bitsnum = 3;
 
 typedef int KeysType;
 typedef int InfoType;
@@ -16,8 +17,8 @@ typedef struct
 }RcdType;
 
 void RadixSort(int a[], int n){
-    RcdType C[n];       //开辟同等大小的辅助空间用于复制数据
-    i = bitsnum-1;
+    int C[n];       //开辟同等大小的辅助空间用于复制数据
+    int i = bitsnum-1;
     while(i >= 0){
         RadixPass(a, C, n, i);      //对L进行一趟奇数排序，排序结果存入C
         i--;
@@ -33,7 +34,7 @@ void RadixSort(int a[], int n){
     }
 }
 
-void RadixPass(RcdType A[], RcdType B[], int n, int i){
+void RadixPass(int A[], int B[], int n, int i){
     //对数组A中记录关键字的“第i位”计数，并按计数数组count的值
     //将A中记录复制到B中
     int count[RADIX];
@@ -51,4 +52,8 @@ void RadixPass(RcdType A[], RcdType B[], int n, int i){
         B[count[j]-1] = A[k];
         count[j]--;
     }
+}
+
+int main(){
+    int a[10] = {11,55,32,57,48,63,12,177,24,10};
 }
