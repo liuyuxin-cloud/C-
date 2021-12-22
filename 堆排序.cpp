@@ -33,7 +33,7 @@ void HeapSort(int h[], int len){
 
 int main(){
     int a[10] = {2,5,8,7,6,9,4,3,2,0};
-    HeapSort(a, 10);
+    HeapSort(a, 9);
     for(int i = 0; i < 10; i++){
         cout << a[i] << " ";
     }
