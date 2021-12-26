@@ -15,7 +15,7 @@ void quicksort(sqlist L, int low, int high){
     int piv,tmp;
     piv = L.elem[low];      //取最左边的元素作为枢轴
 
-    if(low == high) return;
+    if(low >= high) return;
     
     while(j<k){
 
@@ -27,7 +27,7 @@ void quicksort(sqlist L, int low, int high){
             L.elem[i] = tmp;
             j++;
 
-        }else if(L.elem[j] > piv){
+        }else if(L.elem[j] > piv){//当前待考察元素大于枢轴则将其与大于区第一个交换
             
             k--;
             tmp = L.elem[j];
@@ -52,6 +52,6 @@ int main(){
     L.length = 10;
     quicksort(L,0,L.length-1);
     for(int i=0 ; i<L.length ; i++){
-        printf("%d",L.elem[i]);
+            cout << L.elem[i] << " ";
     }
 }

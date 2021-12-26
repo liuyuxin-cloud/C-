@@ -56,4 +56,5 @@ void RadixPass(int A[], int B[], int n, int i){
 
 int main(){
     int a[10] = {11,55,32,57,48,63,12,177,24,10};
+    Radux
 }
