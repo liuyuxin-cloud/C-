@@ -6,33 +6,27 @@ typedef struct BiTNode{
     struct BiTNode *lchild, *rchild;
 }BiTNode, *BiTree;
 
-void buildTreePI(BiTree &T, int preorder[], int inorder[], int pre_start, int pre_end, int in_start, int in_end){
-    if(pre_start == pre_end){
-        return;
+BiTNode* buildTreePI(int preorder[], int inorder[], int pre_start, int pre_end, int in_start, int in_end){
+    if(pre_start > pre_end){
+        return NULL;
     }
+    BiTree T = new BiTNode;
     T->data = preorder[pre_start];
-    int root_index = 0;
+    int root_index = in_start;
     for(int i = in_start; i < in_end; i++){
         if(inorder[i] == preorder[pre_start]){
             root_index = i;
             break;
         }
     }
-    BiTree left = new BiTNode;
-    left->lchild = NULL;
-    left->rchild = NULL;
-    T->lchild = left;
-    BiTree right = new BiTNode;
-    right->lchild = NULL;
-    right->rchild = NULL;
-    T->rchild = right;
     int leftNum = root_index - in_start;
-    buildTreePI(left, preorder, inorder, pre_start+1, pre_start + leftNum + 1, in_start, root_index);
-    buildTreePI(right, preorder, inorder, pre_start + leftNum + 1, pre_end, root_index+1, in_end);
+    T->lchild = buildTreePI(preorder, inorder, pre_start + 1, pre_start + leftNum, in_start, root_index-1);
+    T->rchild = buildTreePI(preorder, inorder, pre_start + leftNum + 1, pre_end, root_index+1, in_end);
+    return T;
 }
 
 void showpreorder(BiTree T){
-    if(T != NULL){
+    if(T){
         cout << T->data << " ";
         showpreorder(T->lchild);
         showpreorder(T->rchild);
@@ -46,6 +40,6 @@ int main(){
     BiTree T = new BiTNode;
     T->lchild = NULL;
     T->rchild = NULL;
-    buildTreePI(T, preorder, inorder, 0, 9, 0, 9);
+    T = buildTreePI(preorder, inorder, 0, 8, 0, 8);
     showpreorder(T);
 }
