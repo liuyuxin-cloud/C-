@@ -36,7 +36,6 @@ void showpreorder(BiTree T){
 int main(){
     int preorder[9] = {1,2,4,5,8,3,6,9,7};
     int inorder[9] = {4,2,8,5,1,6,9,3,7};
-    int len = 9;
     BiTree T = new BiTNode;
     T->lchild = NULL;
     T->rchild = NULL;
