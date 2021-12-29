@@ -13,7 +13,7 @@ BiTNode* buildTreePI(int preorder[], int inorder[], int pre_start, int pre_end, 
     BiTree T = new BiTNode;
     T->data = preorder[pre_start];
     int root_index = in_start;
-    for(int i = in_start; i < in_end; i++){
+    for(int i = in_start; i <= in_end; i++){
         if(inorder[i] == preorder[pre_start]){
             root_index = i;
             break;
