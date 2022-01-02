@@ -1,5 +1,5 @@
 #include<iostream>
-#include<string>
+#include<string.h>
 #include"Stack.cpp"
 using namespace std;
 

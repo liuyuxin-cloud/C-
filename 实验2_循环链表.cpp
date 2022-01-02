@@ -40,7 +40,7 @@ void printList(LinkList L,int pos){
 
 int main(){
     
-    LinkList head = (LinkList)malloc(sizeof(LinkList));
+    LinkList head = (LinkList)malloc(sizeof(Lnode));
     head->next = NULL;
     createList(head);
     printList(head,28);

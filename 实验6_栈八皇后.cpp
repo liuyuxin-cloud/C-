@@ -32,7 +32,7 @@ void eightQueen(){
                 cout << "--------第" << count << "种解---------" << endl;
                 StackTraverse_Sq(s);
                 cout << endl;
-            }
+        }
         Pop_Sq(s,i);
         i++;
     }while(!StackEmpty_Sq(s) || i < 8);

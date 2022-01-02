@@ -35,11 +35,11 @@ void add(TSMatrix s1, TSMatrix s2, TSMatrix &ans){
     ans.nu = 4;
     int t1 = 0, t2 = 0;
     while(t1 < s1.tu && t2 < s2.tu){
-        if(s1.data[t1].row == s2.data[t2].row && s1.data[t1].col == s2.data[t2].col){
+        if(s1.data[t1].row == s2.data[t2].row && s1.data[t1].col == s2.data[t2].col){//同位置元素直接相加
             ans.data[ans.tu].row = s1.data[t1].row;
             ans.data[ans.tu].col = s1.data[t1].col;
             ans.data[ans.tu++].e = s1.data[t1++].e +s2.data[t2++].e;
-        }else if(s1.data[t1].row == s2.data[t2].row && s1.data[t1].col < s2.data[t2].col){
+        }else if(s1.data[t1].row == s2.data[t2].row && s1.data[t1].col < s2.data[t2].col){//行等，列不等
             ans.data[ans.tu].row = s1.data[t1].row;
             ans.data[ans.tu].col = s1.data[t1].col;
             ans.data[ans.tu++].e = s1.data[t1++].e;
@@ -47,7 +47,7 @@ void add(TSMatrix s1, TSMatrix s2, TSMatrix &ans){
             ans.data[ans.tu].row = s2.data[t2].row;
             ans.data[ans.tu].col = s2.data[t2].col;
             ans.data[ans.tu++].e = s2.data[t2++].e;
-        }else if(s1.data[t1].row < s2.data[t2].row){
+        }else if(s1.data[t1].row < s2.data[t2].row){//行不等
             ans.data[ans.tu].row = s1.data[t1].row;
             ans.data[ans.tu].col = s1.data[t1].col;
             ans.data[ans.tu++].e = s1.data[t1++].e;

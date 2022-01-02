@@ -33,6 +33,7 @@ void quicksort(sqlist L, int low, int high){
             tmp = L.elem[j];
             L.elem[j] = L.elem[k];
             L.elem[k] = tmp;
+            j++;
 
         }else{
             j++;
