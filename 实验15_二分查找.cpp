@@ -57,5 +57,4 @@ int main(){
     int a[10] = {1, 5, 2, 8, 9, 4, 3, 6, 7, 0};
     heapSort(a, 10);
     cout << binarySearch1(4, a, 10);
-    
 }

@@ -59,13 +59,12 @@ void createBiTree(BiTree &T, char* str){
     int popflag = 0;
     if(*str == '#') return;
     T->data = str[0];
-    BiTNode *pre = new BiTNode;
-    BiTNode *p = new BiTNode;
+    BiTNode *pre, *p;
     T->left = NULL;
     T->right = NULL;
     Push_Sq(S, T);
     pre = T;
-    for(int i = 1; str[i] != '\0' || !StackEmpty_Sq(S); i++){
+    for(int i = 1; str[i] != '\0'; i++){
         if(str[i] != '#' && str[i] != '\0'){
             p = new BiTNode;
             p->data = str[i];
@@ -81,7 +80,7 @@ void createBiTree(BiTree &T, char* str){
         }
         else if(str[i] == '#' && !StackEmpty_Sq(S)){
             Pop_Sq(S, pre);
-            popflag = 0;
+            popflag = 1;
         }
     }
 }

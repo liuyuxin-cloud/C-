@@ -2,7 +2,6 @@
 #include<stdlib.h>
 
 void merge(int arr[],int temp[],int left,int mid,int right){
-    
     int l_pos = left;
     int r_pos = mid+1;
     int pos = left;
@@ -17,23 +16,19 @@ void merge(int arr[],int temp[],int left,int mid,int right){
 
     while(l_pos <= mid) temp[pos++] = arr[l_pos++];
     while(r_pos <= right) temp[pos++] = arr[r_pos++];
-
     while(left <= right){//将归并的这一部分复制到原数组中
 		arr[left] = temp[left];
 		left++; 
 	} 
-
 }
 
 void mergeSort(int arr[],int temp[],int left,int right){
-    
     if(left < right){
         int mid = (left+right) / 2;
         mergeSort(arr,temp,left,mid);
         mergeSort(arr,temp,mid+1,right);
         merge(arr,temp,left,mid,right);
     }
-
 }
 
 int main(){
@@ -41,7 +36,7 @@ int main(){
     int n = 10,i;
     int temp[10] = {0};
     mergeSort(arr,temp,0,n-1);
-    for( i=0 ; i<n ; i++){
+    for(i = 0; i < n; i++){
     	printf("%d ",arr[i]) ;
     }
 } 

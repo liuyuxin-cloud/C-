@@ -9,11 +9,10 @@ typedef struct Lnode{
 
 
 void createList(LinkList L){
-
     Lnode *q;
     q = L;
     q->data = 'A';
-    for(int i=0 ; i<25 ; i++){
+    for(int i = 0; i < 25; i++){
         Lnode *p = (Lnode*)malloc(sizeof(Lnode));
         p->data = 'B'+i;
         q->next = p;

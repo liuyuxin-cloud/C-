@@ -1,11 +1,10 @@
 #include<iostream>
 #include "Queue.cpp"
 using namespace std;
+const int n = 13;
 
 void originSort(){
-    int n;
     int *ans = new int[n];
-    cin >> n;
     SqQueue Q;
     InitQueue_Sq(Q, n+1);
     for(int i = n; i > 0; i--){
@@ -15,7 +14,7 @@ void originSort(){
         EnQueue_Sq(Q, e);
     }
     
-    for(int i = n-1; i >= 0; i--){
+    for(int i = n - 1; i >= 0; i--){
         int e;
         DeQueue_Sq(Q, e);
         ans[i] = e;
@@ -43,7 +42,6 @@ void originSort2(){
         DeQueue_Sq(q, e);
         ans[e] = i; 
     }
-
 }
 
 
